@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BDXOUL FILE SHARING  </title>
     <style>
+   
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #2c3e50; /* Dark background color */
@@ -77,7 +78,7 @@
         $upload = move_uploaded_file($_FILES['image']['tmp_name'], $_FILES['image']['name']);
 
         if ($upload) {
-                    echo '<p>File Uploaded: <a href="' . $_FILES['image']['name'] . '">View Image</a></p>';
+                    echo '<p>File Uploaded: <a href="' . $_FILES['image']['name'] . '"> VIEW FILE</a></p>';
                 }
          else {
                 echo 'Error: Only image is allowed!';
@@ -86,13 +87,13 @@
     ?>
     <form action="" method="post" enctype="multipart/form-data">
         <h1>Secure Image Upload System</h1>
-        <label for="image">Choose Image</label>
+        <h4>Right Click to Copy file links excpet Images</h4>
+        <h5> Use this for self-hosting or upload, No encryption is added </h5>
+        <label for="image">Choose File</label>
         <input type="file" name="image" id="image">
         <input type="submit" name="upload" value="Upload">
     </form>
-    <span>BDXOUL</a></span>
     <br>
-    <centre> Do not Upload personal or sensitive files</centre>
 </body>
 
 </html>
