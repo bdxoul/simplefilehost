@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BDXOUL SECURE IMAGE SHARING </title>
+    <title>BDXOUL FILE SHARING  </title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -74,25 +74,14 @@
 <body>
     <?php
     if (isset($_POST['upload']) && $_FILES['image']['error'] == 0) {
-        $allow_ext = array('png', 'jpg', 'gif', 'jpeg', 'bmp', 'tif');
-        $allow_type = array('image/png', 'image/gif', 'image/jpeg', 'image/bmp', 'image/tiff');
-        $image_name = $_FILES['image']['name'];
-        $image_type = getimagesize($_FILES['image']['tmp_name']);
-        $image_name = explode('.', $image_name);
-        $ext = end($image_name);
-        if (in_array($ext, $allow_ext) && in_array($image_type['mime'], $allow_type)) {
-            list($width, $height, $mime) = getimagesize($_FILES['image']['tmp_name']);
-            if ($width > 0 && $height > 0) {
-                $upload = move_uploaded_file($_FILES['image']['tmp_name'], $_FILES['image']['name']);
-                if ($upload) {
+        $upload = move_uploaded_file($_FILES['image']['tmp_name'], $_FILES['image']['name']);
+
+        if ($upload) {
                     echo '<p>File Uploaded: <a href="' . $_FILES['image']['name'] . '">View Image</a></p>';
                 }
-            } else {
+         else {
                 echo 'Error: Only image is allowed!';
             }
-        } else {
-            echo 'Error: Invalid File Type!';
-        }
     }
     ?>
     <form action="" method="post" enctype="multipart/form-data">
